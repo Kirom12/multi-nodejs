@@ -6,6 +6,8 @@ class Game
 	{
 		console.log('Game init');
 
+		this.currentPlayerId = Math.round(Math.random()*10000);
+
 		this.playerOne = new Character(42);
 
 		this.playerOne.start();

@@ -11,6 +11,9 @@ app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function(socket){
 	console.log('a user connected');
+	console.log(socket.id);
+
+	socket.send(socket.id);
 
 	//Get the message
 	socket.on('chat message', function(msg){
@@ -21,7 +24,7 @@ io.on('connection', function(socket){
 
 	//Get player position
 	socket.on('player-42', function(player){
-		console.log(player.id + " | x:" + player.x + " y:" + player.y);
+		//console.log(player.id + " | x:" + player.x + " y:" + player.y);
 
 		io.emit('player-' + player.id, {
 			id : player.id,
